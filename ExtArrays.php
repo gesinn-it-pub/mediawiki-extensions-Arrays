@@ -633,7 +633,7 @@ class ExtArrays {
 
 		if ( $store->arrayExists( $arrayId ) ) {
 			$array = $store->getArray( $arrayId );
-			$array = self::array_unique( $array );
+			$array = array_values( self::array_unique( $array ) );
 			$store->setArray( $arrayId, $array );
 		}
 		return '';
