@@ -7,15 +7,22 @@
 	},
 	"scripts": {
 		"test": [
-			"parallel-lint . --exclude vendor --exclude node_modules",
-			"minus-x check .",
+			"@lint",
 			"@phpcs"
 		],
+		"test-coverage": [
+			"@lint",
+			"@phpcs"
+		],
+		"lint": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"minus-x check ."
+		],
+		"phpcs": "phpcs -sp",
 		"fix": [
 			"minus-x fix .",
 			"phpcbf"
-		],
-		"phpcs": "phpcs -sp"
+		]
 	},
 	"config": {
 		"allow-plugins": {
