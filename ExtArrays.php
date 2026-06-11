@@ -861,30 +861,6 @@ class ExtArrays {
 	}
 
 	/**
-	 * private function for validating array by name
-	 * @todo get rid of this!
-	 * @deprecated
-	 */
-	protected function validate_array_by_arrayId( $arrayId ) {
-		if ( !isset( $arrayId ) ) {
-			return '';
-		}
-		if ( !isset( $this->mArrays )
-			|| !array_key_exists( $arrayId, $this->mArrays )
-			|| !is_array( $this->mArrays[ $arrayId ] )
-		) {
-			global $egArraysCompatibilityMode;
-			if ( $egArraysCompatibilityMode ) {
-				return "undefined array: $arrayId"; // COMPATIBILITY-MODE
-			} else {
-				return '';
-			}
-		}
-
-		return true;
-	}
-
-	/**
 	 * Convenience function to get a value from an array. Returns '' in case the
 	 * value doesn't exist or no array was given
 	 *
