@@ -8,17 +8,21 @@
 	"scripts": {
 		"test": [
 			"@lint",
-			"@phpcs"
+			"@phpcs",
+			"@phpunit"
 		],
 		"test-coverage": [
 			"@lint",
-			"@phpcs"
+			"@phpcs",
+			"@phpunit-coverage"
 		],
 		"lint": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
 			"minus-x check ."
 		],
 		"phpcs": "phpcs -sp",
+		"phpunit": "php -d memory_limit=512M ../../tests/phpunit/phpunit.php -c phpunit.xml.dist --testdox",
+		"phpunit-coverage": "php -d memory_limit=512M ../../tests/phpunit/phpunit.php -c phpunit.xml.dist --testdox --coverage-text --coverage-html coverage/php --coverage-clover coverage/php/coverage.xml",
 		"fix": [
 			"minus-x fix .",
 			"phpcbf"
