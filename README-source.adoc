@@ -1,0 +1,27 @@
+include::docs/attributes.adoc[]
+= {project_name}
+
+image:https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/actions/workflows/ci.yml/badge.svg[CI,link=https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/actions/workflows/ci.yml]
+
+The Arrays extension (former ArrayExtension) enhances the parser with
+functions to handle arrays within wiki markup text.
+
+* Website: https://www.mediawiki.org/wiki/Extension:Arrays
+* License: MIT
+
+== Installation
+
+Place the +Arrays+ directory within your MediaWiki +extensions+ directory, then
+add the following to +LocalSettings.php+:
+
+[source,php]
+----
+wfLoadExtension( 'Arrays' );
+----
+
+Be aware of breaking behavioral changes introduced after version 1.3.2. There
+is a new configuration variable +$egArraysCompatibilityMode+ for switching back
+to old behavior. See the +RELEASE-NOTES+ file for details.
+
+You will want to install the Loops and Variables extensions to fully take
+advantage of this extension.
