@@ -11,13 +11,6 @@ use Wikimedia\AtEase\AtEase;
 class ExtArrays {
 
 	/**
-	 * Version of the 'Arrays' extension.
-	 *
-	 * Note: This should be kept synchronised with the version in extension.json.
-	 */
-	const VERSION = '2.2.0';
-
-	/**
 	 * Store for arrays.
 	 *
 	 * @var array
