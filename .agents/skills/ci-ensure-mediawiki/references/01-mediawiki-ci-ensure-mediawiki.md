@@ -5,9 +5,16 @@ MediaWiki extension, backed by
 [docker-compose-ci](https://github.com/gesinn-it-pub/docker-compose-ci)
 (DCI).
 
-Run this procedure whenever CI is missing, broken, or needs to be
-brought up to the current standard. Every step is a check-then-act: safe
-to re-run on a repo that is already correctly configured.
+Run this procedure in two phases:
+
+1.  **Assess** — run all detection commands (Gather facts + Steps 1–8),
+    collect findings, present a status summary to the user, and wait for
+    explicit approval.
+
+2.  **Apply** — only after the user confirms, make changes and commit.
+
+Never start writing files or running mutating commands before the user
+has approved the plan.
 
 # Gather facts
 
@@ -477,6 +484,25 @@ After running all detection commands, ask the user only if:
 
 Do not ask about extensions that are already pinned or clearly not
 needed.
+
+# Present findings and await approval
+
+After completing all detection steps above, present a structured status
+summary to the user:
+
+- For each item: current state (OK / missing / needs update) and the
+  planned action (create, update, skip).
+
+- List any open questions (ambiguous extension versions, etc.).
+
+- State the full list of files that will be created or modified.
+
+Then **stop and wait** for the user to confirm before making any
+changes. Do not proceed to Step 9 or beyond until the user explicitly
+approves (e.g. "yes", "go ahead", "looks good").
+
+If the user requests adjustments, revise the plan and present it again
+before proceeding.
 
 # Step 9: Activate Codecov
 
