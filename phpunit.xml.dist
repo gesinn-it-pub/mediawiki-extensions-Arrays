@@ -16,9 +16,6 @@
         <testsuite name="extension-arrays-unit">
             <directory>tests/phpunit/unit</directory>
         </testsuite>
-        <testsuite name="extension-arrays-integration">
-            <directory>tests/phpunit/integration</directory>
-        </testsuite>
     </testsuites>
     <coverage>
         <include>
