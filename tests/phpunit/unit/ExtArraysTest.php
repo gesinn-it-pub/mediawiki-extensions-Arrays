@@ -159,37 +159,40 @@ class ExtArraysTest extends MediaWikiUnitTestCase {
 	public function testEscapeForExpansionWithNullTemplatesReturnsInputUnchanged(): void {
 		global $egArraysExpansionEscapeTemplates;
 		$original = $egArraysExpansionEscapeTemplates;
-		$egArraysExpansionEscapeTemplates = null;
-
-		$result = ExtArrays::escapeForExpansion( 'foo=bar|baz' );
-		$this->assertSame( 'foo=bar|baz', $result );
-
-		$egArraysExpansionEscapeTemplates = $original;
+		try {
+			$egArraysExpansionEscapeTemplates = null;
+			$result = ExtArrays::escapeForExpansion( 'foo=bar|baz' );
+			$this->assertSame( 'foo=bar|baz', $result );
+		} finally {
+			$egArraysExpansionEscapeTemplates = $original;
+		}
 	}
 
 	public function testEscapeForExpansionReplacesSpecialCharacters(): void {
 		global $egArraysExpansionEscapeTemplates;
 		$original = $egArraysExpansionEscapeTemplates;
-		$egArraysExpansionEscapeTemplates = [
-			'=' => '{{=}}',
-			'|' => '{{!}}',
-		];
-
-		$result = ExtArrays::escapeForExpansion( 'a=b|c' );
-		$this->assertSame( 'a{{=}}b{{!}}c', $result );
-
-		$egArraysExpansionEscapeTemplates = $original;
+		try {
+			$egArraysExpansionEscapeTemplates = [
+				'=' => '{{=}}',
+				'|' => '{{!}}',
+			];
+			$result = ExtArrays::escapeForExpansion( 'a=b|c' );
+			$this->assertSame( 'a{{=}}b{{!}}c', $result );
+		} finally {
+			$egArraysExpansionEscapeTemplates = $original;
+		}
 	}
 
 	public function testEscapeForExpansionWithNoSpecialCharsReturnsInputUnchanged(): void {
 		global $egArraysExpansionEscapeTemplates;
 		$original = $egArraysExpansionEscapeTemplates;
-		$egArraysExpansionEscapeTemplates = [ '=' => '{{=}}' ];
-
-		$result = ExtArrays::escapeForExpansion( 'hello world' );
-		$this->assertSame( 'hello world', $result );
-
-		$egArraysExpansionEscapeTemplates = $original;
+		try {
+			$egArraysExpansionEscapeTemplates = [ '=' => '{{=}}' ];
+			$result = ExtArrays::escapeForExpansion( 'hello world' );
+			$this->assertSame( 'hello world', $result );
+		} finally {
+			$egArraysExpansionEscapeTemplates = $original;
+		}
 	}
 
 	private function callIsValidRegEx( string $pattern, bool $forRegexFun = false ): bool {
