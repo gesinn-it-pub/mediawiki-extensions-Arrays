@@ -461,13 +461,10 @@ class ExtArraysIntegrationTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testCreateArraySanitizesValues(): void {
-		$parser = $this->getServiceContainer()->getParser();
-		$parser->parse( '', \Title::makeTitle( NS_MAIN, 'Test' ), \ParserOptions::newFromAnon() );
-
-		$store = ExtArrays::get( $parser );
-		$store->createArray( 'myArr', [ ' foo ', 'bar ', ' baz' ] );
-
-		$this->assertSame( [ 'foo', 'bar', 'baz' ], $store->mArrays['myArr'] );
+		$this->assertSame(
+			'foo, bar, baz',
+			$this->parse( '{{#arraydefine:myArr| foo , bar , baz |,}}{{#arrayprint:myArr}}' )
+		);
 	}
 
 	public function testUnsetArrayReturnsTrueWhenRemoved(): void {
@@ -478,7 +475,12 @@ class ExtArraysIntegrationTest extends MediaWikiIntegrationTestCase {
 		$store->createArray( 'myArr', [ 'x' ] );
 
 		$this->assertTrue( $store->unsetArray( 'myArr' ) );
-		$this->assertArrayNotHasKey( 'myArr', $store->mArrays );
+		$out = $parser->parse(
+			'{{#arraysize:myArr}}',
+			\Title::makeTitle( NS_MAIN, 'Test' ),
+			\ParserOptions::newFromAnon()
+		);
+		$this->assertSame( '', \Parser::stripOuterParagraph( $out->getRawText() ) );
 	}
 
 	public function testUnsetArrayReturnsFalseForMissingArray(): void {
@@ -499,6 +501,11 @@ class ExtArraysIntegrationTest extends MediaWikiIntegrationTestCase {
 
 		ExtArrays::onParserClearState( $parser );
 
-		$this->assertSame( [], $parser->mExtArrays->mArrays );
+		$out = $parser->parse(
+			'{{#arraysize:a}}',
+			\Title::makeTitle( NS_MAIN, 'Test' ),
+			\ParserOptions::newFromAnon()
+		);
+		$this->assertSame( '', \Parser::stripOuterParagraph( $out->getRawText() ) );
 	}
 }

@@ -239,7 +239,7 @@ class ExtArraysTest extends MediaWikiUnitTestCase {
 	private function makeStore( array $arrays ): ExtArrays {
 		$store = new ExtArrays();
 		foreach ( $arrays as $id => $arr ) {
-			$store->mArrays[ $id ] = $arr;
+			$store->createArray( $id, $arr );
 		}
 		return $store;
 	}

@@ -16,7 +16,7 @@ class ExtArrays {
 	 * @var array
 	 * @private
 	 */
-	public $mArrays = [];
+	protected $mArrays = [];
 
 	/**
 	 * Default separator for '#arrayprint'. Might be ', ' in compatibility-mode or
