@@ -5,9 +5,3 @@
 // NEVER edit or regenerate AGENTS.md manually.
 // ============================================================
 include::docs/attributes.adoc[]
-
-== Conventional Commits
-
-include::docs/gesinn-it-docs-master-pub/sections/universal/conventional-commits-policy.adoc[]
-
-include::docs/gesinn-it-docs-master-pub/sections/universal/semver-policy.adoc[]
