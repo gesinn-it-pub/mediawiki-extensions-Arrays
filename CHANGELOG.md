@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - PHPUnit unit tests for internal helper methods (`parse_options`, `arrayUnique`, `arraySort`, `escapeForExpansion`, `isValidRegEx`, `validate_array_index`)
 - GitHub Actions CI workflow via docker-compose-ci (MW 1.39 + 1.43, MySQL 8)
+- Codecov badge in README
 
 ### Fixed
 - `#arrayunique`: restore sequential array keys after deduplication ([536eec4](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/536eec4))

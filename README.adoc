@@ -6,6 +6,7 @@
 = {project_name}
 
 image:https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/actions/workflows/ci.yml/badge.svg[CI,link=https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/actions/workflows/ci.yml]
+image:https://codecov.io/gh/gesinn-it-pub/mediawiki-extensions-Arrays/branch/master/graph/badge.svg[Codecov,link=https://app.codecov.io/gh/gesinn-it-pub/mediawiki-extensions-Arrays]
 
 The Arrays extension (former ArrayExtension) enhances the parser with
 functions to handle arrays within wiki markup text.
