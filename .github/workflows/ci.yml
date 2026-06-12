@@ -63,4 +63,5 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: build/coverage/php/coverage.xml
+          disable_search: true
         if: matrix.coverage == true
