@@ -851,9 +851,6 @@ class ExtArrays {
 			}
 		}
 
-		if ( !isset( $array ) ) {
-			return false;
-		}
 		if ( !array_key_exists( $index, $array ) ) {
 			return false;
 		}
