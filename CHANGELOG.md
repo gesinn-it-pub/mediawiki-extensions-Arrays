@@ -7,18 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- PHPUnit unit tests for internal helper methods (`parse_options`, `arrayUnique`, `arraySort`, `escapeForExpansion`, `isValidRegEx`, `validate_array_index`)
-- GitHub Actions CI workflow via docker-compose-ci (MW 1.39 + 1.43, MySQL 8)
-- Codecov badge in README
+## [2.2.2] - 2026-06-12
+
+Fixes PHP 8.1/8.4 compatibility issues, restores correct `#arrayunique` key handling, and hardens internal code quality with visibility tightening and dead-code removal.
+
+### Changed
+- Tighten method visibility from public to protected in `ExtArrays` [`8b544e0`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/8b544e0)
+- Remove dead `!isset` check in `validate_array_index` [`077cfec`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/077cfec)
+- Remove deprecated internal method `validate_array_by_arrayId()` (no callers) [`af23847`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/af23847)
+- Remove redundant `VERSION` constant from `ExtArrays` class [`ba57ee9`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/ba57ee9)
+- Add Codecov badge in README [`666ecfb`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/666ecfb)
 
 ### Fixed
-- `#arraysort`: replace `null` sort flag with `SORT_REGULAR` to fix PHP 8.1 deprecation and PHP 8.4 fatal error when using `nolocale` or compatibility mode
-- `#arrayunique`: restore sequential array keys after deduplication ([536eec4](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/536eec4))
-
-### Removed
-- Deprecated internal method `validate_array_by_arrayId()` (had no callers)
-- Redundant `VERSION` constant from `ExtArrays` class (canonical version is in `extension.json`)
+- `#arraysort`: replace `null` sort flag with `SORT_REGULAR` to fix PHP 8.1 deprecation and PHP 8.4 fatal error [`a718223`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/a718223)
+- `#arrayunique`: restore sequential array keys after deduplication [`536eec4`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/536eec4)
+- Bootstrap script: exit with code 1 when run outside MediaWiki tree [`d408bee`](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/d408bee)
 
 ## [2.2.1] — 2020-12-07
 
@@ -36,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Avoid possible frequent PHP warning in parser function handling
 - Avoid PHP Notice for array definitions with an initial separator
 
-[Unreleased]: https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/compare/3aac929...HEAD
+[Unreleased]: https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/compare/2.2.2...HEAD
+[2.2.2]: https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/compare/3aac929...2.2.2
 [2.2.1]: https://github.com/wikimedia/mediawiki-extensions-Arrays/compare/774a879...3aac929
 [2.2.0]: https://github.com/wikimedia/mediawiki-extensions-Arrays
