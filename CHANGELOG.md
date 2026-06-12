@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Codecov badge in README
 
 ### Fixed
+- `#arraysort`: replace `null` sort flag with `SORT_REGULAR` to fix PHP 8.1 deprecation and PHP 8.4 fatal error when using `nolocale` or compatibility mode
 - `#arrayunique`: restore sequential array keys after deduplication ([536eec4](https://github.com/gesinn-it-pub/mediawiki-extensions-Arrays/commit/536eec4))
 
 ### Removed

@@ -1107,7 +1107,7 @@ class ExtArrays {
 			|| $egArraysCompatibilityMode // COMPATIBILITY-MODE
 		) {
 			// 'nolocale' will prevent from using this flag!
-			$localeFlag = null;
+			$localeFlag = SORT_REGULAR;
 		}
 
 		// do the requested sorting of the given array:

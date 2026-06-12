@@ -318,6 +318,14 @@ class ExtArraysIntegrationTest extends MediaWikiIntegrationTestCase {
 				'{{#arraydefine:a|a,b,c}}{{#arraysort:a|reverse}}{{#arrayprint:a}}',
 				'c, b, a',
 			],
+			'ascending with nolocale flag' => [
+				'{{#arraydefine:a|c,a,b}}{{#arraysort:a|asc nolocale}}{{#arrayprint:a}}',
+				'a, b, c',
+			],
+			'descending with nolocale flag' => [
+				'{{#arraydefine:a|c,a,b}}{{#arraysort:a|desc nolocale}}{{#arrayprint:a}}',
+				'c, b, a',
+			],
 			'non-existent array returns empty string' => [
 				'{{#arraysort:nosuch|asc}}',
 				'',
