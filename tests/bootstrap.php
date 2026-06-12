@@ -5,7 +5,7 @@ if ( PHP_SAPI !== 'cli' ) {
 }
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'MediaWiki is not available for the test environment' );
+	die( 1 );
 }
 
 $mwVendorPath = __DIR__ . '/../../../vendor/autoload.php';
