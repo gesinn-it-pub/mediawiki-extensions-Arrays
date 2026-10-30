@@ -23,4 +23,7 @@ COMPOSER_EXT?=true
 # Enables node.js related tests and "npm install"
 NODE_JS?=true
 
+# coverage: PCOV is several times faster than Xdebug (line coverage only)
+COVERAGE_DRIVER?=pcov
+
 include build/Makefile
